@@ -23,7 +23,7 @@ pub fn Combinations(comptime Element: type, comptime Set: type) type {
             };
         }
 
-        fn next(self: *Self) ?[]Element {
+        pub fn next(self: *Self) ?[]Element {
             return if (self.nck.next()) |nckbits| blk: {
                 var bits = nckbits;
                 @memcpy(self.buf, self.initial_state[0..@intCast(self.nck.k)]);
