@@ -14,7 +14,7 @@ pub fn Combinations(comptime Element: type, comptime Set: type) type {
         const Nck = NChooseK(Set);
         const SetLog2 = std.math.Log2Int(Set);
 
-        pub fn init(initial_state: []const Element, buf: []u8, k: SetLog2) !Self {
+        pub fn init(initial_state: []const Element, buf: []Element, k: SetLog2) !Self {
             if (k > initial_state.len or k > buf.len or initial_state.len > std.math.maxInt(SetLog2)) return error.ArgumentBounds;
             return Self{
                 .nck = try Nck.init(@intCast(initial_state.len), k),
